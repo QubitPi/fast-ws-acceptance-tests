@@ -1,0 +1,14 @@
+mutation {
+    book(
+        op: UPSERT
+        data:{
+            title: "Pride and Prejudice",
+        }
+    ) {
+        edges {
+            node {
+                id
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+# Copyright Jiaqi Liu
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+---
+name: Data Models Acceptance Tests CI/CD
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  code-style-check:
+    uses: QubitPi/hashicorp-aws/.github/workflows/yml-and-md-style-checks.yml@master
+
+  acceptance-tests:
+    name: Acceptance tests on data models
+    needs: [code-style-check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: QubitPi/hashicorp-aws/auxiliary/github/actions/jdk-setup@master
+      - name: Download data models
+        run: git clone https://github.com/QubitPi/jersey-webservice-template-jpa-data-models.git ../data-models
+      - name: Install data-models
+        uses: QubitPi/hashicorp-aws/auxiliary/github/actions/jersey-webservice-template/jpa-elide/install-data-models@master
+        with:
+          model-package-jar-group-id: com.qubitpi
+          model-package-jar-artifact-id: jersey-webservice-template-jpa-data-models
+          model-package-jar-version: 1.0.0
+          models-path: ../data-models
+      - name: Spin up Jersey Webservice Template (jpa-elide branch) instance in Docker Compose
+        uses: QubitPi/hashicorp-aws/auxiliary/github/actions/jersey-webservice-template/jpa-elide/docker-compose@master
+        with:
+          webservice-repo-clone-url: https://github.com/QubitPi/jersey-webservice-template.git
+          repo-branch: jpa-elide
+          model-package: com.qubitpi.ws.jersey.template.models
+          oauth-enabled: false
+      - name: Wait until Docker Compose is up
+        uses: iFaxity/wait-on-action@v1
+        with:
+          resource: http://localhost:8080
+      - name: Run acceptance tests
+        run: mvn clean verify
