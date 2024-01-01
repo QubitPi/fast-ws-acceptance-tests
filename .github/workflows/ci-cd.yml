@@ -19,6 +19,8 @@ name: Data Models Acceptance Tests CI/CD
   push:
     branches:
       - master
+  repository_dispatch:
+    types: [jersey-webservice-template-jpa-data-model-changes]
 
 jobs:
   code-style-check:
