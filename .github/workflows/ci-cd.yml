@@ -29,6 +29,9 @@ jobs:
   acceptance-tests:
     name: Acceptance tests on data models
     needs: [code-style-check]
+    outputs:
+      outcome: ${{ job.status }}
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -56,3 +59,13 @@ jobs:
           resource: http://localhost:8080
       - name: Run acceptance tests
         run: mvn clean verify
+
+  slack-notification:
+    name: Send Slack Notification
+    if: ${{ always() }}
+    needs: acceptance-tests
+    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
+    with:
+      job-status: ${{ needs.acceptance-tests.outputs.outcome }}
+    secrets:
+      slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
