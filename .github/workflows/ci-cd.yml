@@ -36,18 +36,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/jersey-webservice-deployment-actions/.github/actions/jdk-setup@master
       - name: Download data models
         run: git clone https://github.com/QubitPi/jersey-webservice-template-jpa-data-models.git ../data-models
       - name: Install data-models
-        uses: QubitPi/hashicorp-aws/.github/actions/jersey-webservice-template/jpa-elide/install-data-models@master
+        uses: QubitPi/jersey-webservice-deployment-actions/.github/actions/jpa-elide/install-data-models@master
         with:
           model-package-jar-group-id: com.qubitpi
           model-package-jar-artifact-id: jersey-webservice-template-jpa-data-models
           model-package-jar-version: 1.0.0
           models-path: ../data-models
       - name: Spin up Jersey Webservice Template (jpa-elide branch) instance in Docker Compose
-        uses: QubitPi/hashicorp-aws/.github/actions/jersey-webservice-template/jpa-elide/docker-compose@master
+        uses: ./.github/actions/docker-compose
         with:
           webservice-repo-clone-url: https://github.com/QubitPi/jersey-webservice-template.git
           repo-branch: jpa-elide
