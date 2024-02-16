@@ -24,7 +24,7 @@ License
 -------
 
 The use and distribution terms for [jersey-webservice-template-jpa-data-models-acceptance-tests] are covered by the
-[Apache License, Version 2.0][Apache License, Version 2.0].
+[Apache License, Version 2.0].
 
 <div align="center">
     <a href="https://opensource.org/licenses">
