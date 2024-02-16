@@ -52,7 +52,6 @@ jobs:
           webservice-repo-clone-url: https://github.com/QubitPi/jersey-webservice-template.git
           repo-branch: jpa-elide
           model-package: com.qubitpi.ws.jersey.template.models
-          oauth-enabled: false
       - name: Wait until Docker Compose is up
         uses: iFaxity/wait-on-action@v1
         with:
