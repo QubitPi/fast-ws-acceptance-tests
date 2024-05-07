@@ -23,12 +23,12 @@ name: Data Models Acceptance Tests CI/CD
     types: [jersey-webservice-template-jpa-data-model-changes]
 
 jobs:
-  code-style-check:
-    uses: QubitPi/hashicorp-aws/.github/workflows/yml-and-md-style-checks.yml@master
+  yml-md-style-and-link-checks:
+    uses: QubitPi/hashicorp-aws/.github/workflows/yml-md-style-and-link-checks.yml@master
 
   acceptance-tests:
     name: Acceptance tests on data models
-    needs: [code-style-check]
+    needs: [yml-md-style-and-link-checks]
     outputs:
       outcome: ${{ job.status }}
     continue-on-error: true
@@ -36,22 +36,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup JDK
-        uses: QubitPi/jersey-webservice-deployment-actions/.github/actions/jdk-setup@master
-      - name: Download data models
-        run: git clone https://github.com/QubitPi/jersey-webservice-template-jpa-data-models.git ../data-models
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
       - name: Install data-models
-        uses: QubitPi/jersey-webservice-deployment-actions/.github/actions/jpa-elide/install-data-models@master
+        uses: ./.github/actions/configure-data-models
         with:
-          model-package-jar-group-id: com.qubitpi
+          model-package-jar-group-id: io.github.qubitpi
           model-package-jar-artifact-id: jersey-webservice-template-jpa-data-models
-          model-package-jar-version: 1.0.0
-          models-path: ../data-models
+          model-package-jar-version: 1.0.1
       - name: Spin up Jersey Webservice Template (jpa-elide branch) instance in Docker Compose
         uses: ./.github/actions/docker-compose
         with:
           webservice-repo-clone-url: https://github.com/QubitPi/jersey-webservice-template.git
           repo-branch: jpa-elide
-          model-package: com.qubitpi.ws.jersey.template.models
+          model-package: io.github.qubitpi.ws.jersey.template.models
       - name: Wait until Docker Compose is up
         uses: iFaxity/wait-on-action@v1
         with:
