@@ -44,4 +44,4 @@ The use and distribution terms for [jersey-webservice-template-jpa-data-models-a
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
 
-[start a local JWT instance in Docker Compose]: https://qubitpi.github.io/jersey-webservice-template/docs/elide/development#running-webservice-in-docker-compose
+[start a local JWT instance in Docker Compose]: https://qubitpi.github.io/jersey-webservice-template/docs/crud/
