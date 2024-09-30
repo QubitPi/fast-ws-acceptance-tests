@@ -24,7 +24,7 @@ name: Data Models Acceptance Tests CI/CD
 
 jobs:
   yml-md-style-and-link-checks:
-    uses: QubitPi/hashicorp-aws/.github/workflows/yml-md-style-and-link-checks.yml@master
+    uses: QubitPi/hashistack/.github/workflows/yml-md-style-and-link-checks.yml@master
 
   acceptance-tests:
     name: Acceptance tests on data models
@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+        uses: QubitPi/hashistack/.github/actions/jdk-setup@master
       - name: Install data-models
         uses: ./.github/actions/configure-data-models
         with:
@@ -60,7 +60,7 @@ jobs:
     name: Send Slack Notification
     if: ${{ always() }}
     needs: acceptance-tests
-    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
+    uses: QubitPi/hashistack/.github/workflows/slack-notification.yml@master
     with:
       job-status: ${{ needs.acceptance-tests.outputs.outcome }}
     secrets:
