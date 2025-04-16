@@ -32,7 +32,7 @@ The use and distribution terms for [fast-ws-acceptance-tests]() are covered by t
 
 [fast-ws]: https://github.com/QubitPi/fast-ws
 
-[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/fast-ws-acceptance-tests/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/fast-ws-acceptance-tests/ci-cd.yaml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status URL]: https://github.com/QubitPi/fast-ws-acceptance-tests/actions/workflows/ci-cd.yaml
 
 [Java Version Badge]: https://img.shields.io/badge/Java-17-brightgreen?style=for-the-badge&logo=OpenJDK&logoColor=white
