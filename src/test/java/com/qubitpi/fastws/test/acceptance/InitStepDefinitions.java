@@ -1,5 +1,5 @@
 /*
- * Copyright Jiaqi Liu
+ * Copyright 2025 Jiaqi Liu. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.ws.jersey.template.models.test.acceptance;
+package com.qubitpi.fastws.test.acceptance;
 
 import io.cucumber.java.BeforeAll;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-
-import java.util.List;
 
 /**
  * BDD initialization step definition before all other steps are executed.
@@ -37,8 +34,6 @@ public class InitStepDefinitions extends AbstractStepDefinitions {
     @BeforeAll
     public static void beforeAll() {
         initRestAssured();
-        cleanupDatabase();
-        crateNewBook();
     }
 
     /**
@@ -52,40 +47,5 @@ public class InitStepDefinitions extends AbstractStepDefinitions {
                 .build()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON);
-    }
-
-    /**
-     * Makes sure DB is empty initially.
-     */
-    private static void cleanupDatabase() {
-        final Response allBooks = RestAssured
-                .given()
-                .body(String.format(QUERY_FORMAT, payload("get-all-books.graphql")))
-                .post(GRAPHQL_ENDPOINT_PATH);
-        final List<String> allBookIds = allBooks.jsonPath().getList("data.book.edges.node.id");
-
-        allBookIds.forEach(id -> {
-            RestAssured
-                    .given()
-                    .body(String.format(QUERY_FORMAT, String.format(payload("delete-book-by-id.graphql"), id)));
-        });
-    }
-
-    /**
-     * Populate database with some data.
-     */
-    private static void crateNewBook() {
-        RestAssured
-                .given()
-                .body(
-                        String.format(
-                                QUERY_FORMAT,
-                                String.format(payload("create-a-new-book.graphql"))
-                        )
-                )
-                .when()
-                .post(GRAPHQL_ENDPOINT_PATH)
-                .then()
-                .statusCode(200);
     }
 }

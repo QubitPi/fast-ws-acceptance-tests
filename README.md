@@ -1,18 +1,18 @@
-Jersey Webservice Template JPA Data Model Acceptance Tests
-==========================================================
+FastWS Acceptance Tests
+=======================
 
 ![Cucumber Badge][Cucumber Badge]
 ![Java Version Badge][Java Version Badge]
-[![GitHub Workflow Status][GitHub Workflow Status]](https://github.com/QubitPi/jersey-webservice-template-jpa-data-models-acceptance-tests/actions/workflows/ci-cd.yml)
-[![License Badge]](https://www.apache.org/licenses/LICENSE-2.0)
+[![GitHub Workflow Status][GitHub Workflow Status]][GitHub Workflow Status URL]
+[![Apache License Badge]][Apache License, Version 2.0]
 
-[jersey-webservice-template-jpa-data-models-acceptance-tests] is an acceptance test framework which is a slightly
-modified BDD that [eliminates the QA](https://spectrum.ieee.org/yahoos-engineers-move-to-coding-without-a-net)
+__fast-ws-acceptance-tests__ is an acceptance test framework which is a slightly modified BDD that
+[eliminates the QA](https://spectrum.ieee.org/yahoos-engineers-move-to-coding-without-a-net)
 
-The purpose of this Maven project is to serve as an example for testing [jersey-webservice-template-jpa-data-models] to
-make sure that the generated API complies with the business requirement,
+The purpose of this Maven project is to serve as an example for testing [fast-ws] to make sure that the generated API
+complies with the business requirement,
 
-To run all acceptance tests, [start a local JWT instance in Docker Compose]; then run
+To run all acceptance tests, [start a local FastWS instance in Docker]; then run
 
 ```bash
 mvn clean verify
@@ -23,19 +23,18 @@ mvn clean verify
 License
 -------
 
-The use and distribution terms for [jersey-webservice-template-jpa-data-models-acceptance-tests] are covered by the
-[Apache License, Version 2.0].
+The use and distribution terms for [fast-ws-acceptance-tests]() are covered by the [Apache License, Version 2.0].
 
-[Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
+[Apache License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
+[Apache License, Version 2.0]: https://www.apache.org/licenses/LICENSE-2.0
 
 [Cucumber Badge]: https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white
 
-[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/jersey-webservice-template-jpa-data-models-acceptance-tests/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[fast-ws]: https://github.com/QubitPi/fast-ws
+
+[GitHub Workflow Status]: https://img.shields.io/github/actions/workflow/status/QubitPi/fast-ws-acceptance-tests/ci-cd.yml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status URL]: https://github.com/QubitPi/fast-ws-acceptance-tests/actions/workflows/ci-cd.yaml
 
 [Java Version Badge]: https://img.shields.io/badge/Java-17-brightgreen?style=for-the-badge&logo=OpenJDK&logoColor=white
-[jersey-webservice-template-jpa-data-models]: https://github.com/QubitPi/jersey-webservice-template-jpa-data-models
-[jersey-webservice-template-jpa-data-models-acceptance-tests]: https://github.com/QubitPi/jersey-webservice-template-jpa-data-models-acceptance-tests
 
-[License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
-
-[start a local JWT instance in Docker Compose]: https://qubitpi.github.io/jersey-webservice-template/docs/crud/
+[start a local FastWS instance in Docker]: https://fastws.qubitpi.org/docs/development#running-webservice-in-docker

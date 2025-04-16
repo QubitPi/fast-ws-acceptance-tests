@@ -1,9 +1,0 @@
-mutation {
-    book(op:DELETE, ids: ["%s"]) {
-        edges {
-            node {
-                id
-            }
-        }
-    }
-}

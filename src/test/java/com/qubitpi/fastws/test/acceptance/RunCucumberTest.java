@@ -1,5 +1,5 @@
 /*
- * Copyright Jiaqi Liu
+ * Copyright 2025 Jiaqi Liu. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.ws.jersey.template.models.test.acceptance;
+package com.qubitpi.fastws.test.acceptance;
 
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
@@ -27,7 +27,7 @@ import org.junit.platform.suite.api.Suite;
  */
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("com/qubitpi/ws/jersey/template/models/test/acceptance/")
+@SelectClasspathResource("com/qubitpi/fastws/test/acceptance/")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class RunCucumberTest {
 
