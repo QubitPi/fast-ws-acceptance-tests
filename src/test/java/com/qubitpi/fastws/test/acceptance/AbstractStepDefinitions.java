@@ -1,5 +1,5 @@
 /*
- * Copyright Jiaqi Liu
+ * Copyright 2025 Jiaqi Liu. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qubitpi.ws.jersey.template.models.test.acceptance;
+package com.qubitpi.fastws.test.acceptance;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -31,14 +31,10 @@ import java.util.Objects;
  */
 abstract class AbstractStepDefinitions {
 
-    protected static final String QUERY_FORMAT = "{\"query\": \"%s\"}";
-    protected static final String NODE_ID_JSON_PATH = "data.node.edges[0].node.id";
-    protected static final String CREATE_NODE_PAYLOAD = "create-a-new-node.graphql";
-
     /**
      * GraphQL resource path for querying graph.
      */
-    protected static final String GRAPHQL_ENDPOINT_PATH = "/data";
+    protected static final String BASE_PATH = "/data";
 
     /**
      * Loads a resource file, under "payload" resource directory, as a {@code String} object given that resource file

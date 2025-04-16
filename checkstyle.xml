@@ -181,7 +181,7 @@
             <property name="severity" value="error"/>
         </module>
         <module name="NonEmptyAtclauseDescription">
-            <property name="javadocTokens" value="	PARAM_LITERAL, RETURN_LITERAL, THROWS_LITERAL, DEPRECATED_LITERAL"/>
+            <property name="javadocTokens" value="PARAM_LITERAL, RETURN_LITERAL, THROWS_LITERAL, DEPRECATED_LITERAL"/>
             <property name="severity" value="error"/>
         </module>
         <module name="SummaryJavadocCheck">
@@ -385,8 +385,8 @@
         </module>
     </module>
     <!-- Headers -->
-    <module name="Header">
-        <property name="header" value="/*\n * Copyright Jiaqi Liu"/>
+    <module name="RegexpHeader">
+        <property name="header" value="/*\n * Copyright 20[0-2][0-9],? Jiaqi Liu. All rights reserved."/>
         <property name="fileExtensions" value="java,groovy,g4" />
         <property name="severity" value="error"/>
     </module>
