@@ -32,9 +32,9 @@ import java.util.Objects;
 abstract class AbstractStepDefinitions {
 
     /**
-     * GraphQL resource path for querying graph.
+     * Resource path for querying graph.
      */
-    protected static final String BASE_PATH = "/data";
+    protected static final String BASE_PATH = "/";
 
     /**
      * Loads a resource file, under "payload" resource directory, as a {@code String} object given that resource file

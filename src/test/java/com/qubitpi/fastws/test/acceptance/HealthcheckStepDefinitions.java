@@ -43,7 +43,7 @@ public class HealthcheckStepDefinitions extends AbstractStepDefinitions {
      */
     @When("^the query is executed$")
     public void executeQuery() {
-        postResponse = getRequest.when().get(BASE_PATH + "/healthcheck");
+        postResponse = getRequest.when().get(BASE_PATH + "healthcheck");
     }
 
     /**
