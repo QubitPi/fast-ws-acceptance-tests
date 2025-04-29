@@ -77,6 +77,6 @@ jobs:
       - name: Wait until Docker is up
         uses: iFaxity/wait-on-action@v1
         with:
-          resource: http://localhost:8080/v1/data/healthcheck
+          resource: http://localhost:8080/v1/healthcheck
       - name: Run acceptance tests
         run: mvn clean verify
